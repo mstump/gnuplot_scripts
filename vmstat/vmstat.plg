@@ -1,0 +1,11 @@
+set term pdfcairo enhanced font "Arial,12"
+set output output
+set autoscale
+set bmargin 7
+set xlabel "Time (seconds)"
+set ylabel "Percent"
+
+plot filename using 13 title 'CPU user load' with lines, \
+     filename using 14 title 'CPU system load' with lines, \
+     filename using 15 title 'CPU idle time' with lines, \
+     filename using 16 title 'CPU IO wait time' with lines
