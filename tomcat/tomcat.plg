@@ -1,0 +1,36 @@
+set term pngcairo enhanced size 2000,2000
+set output output
+set autoscale
+set bmargin 7
+
+set xdata time
+set timefmt "%H:%M:%S"
+set xlabel "Time"
+unset key
+
+set xtics rotate
+set size 1,1
+set multiplot layout 3,1
+
+set size 1.0,0.33
+set ylabel 'Response Size Latency'
+# plot filename using 1:4 with dots
+plot filename using 1:4 pt 7 ps 1
+
+set size 1.0,0.33
+set sample 3
+set ylabel 'Response Code'
+set yrange [200:502]
+plot filename using 1:2 pt 7 ps 1
+
+set size 1.0,0.33
+set ylabel 'Response Size Bytes'
+plot filename using 1:3 pt 7 ps 1
+
+# binwidth=5
+# bin(x,width)=width*floor(x/width)
+# set size 1.0,0.33
+# set ylabel 'Response Size Bytes'
+# plot filename using (bin($4,binwidth)):(1.0) smooth freq with boxes
+
+unset multiplot
